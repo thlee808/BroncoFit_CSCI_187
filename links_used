@@ -1,4 +1,4 @@
 https://code.visualstudio.com/docs/nodejs/reactjs-tutorial I followed this to set up the react project in VS code
 
 https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/ I followed this to set up the menu to support the multiple pages
-
+- if you get an error saying can't resolve react-icons/fa then make sure that the react icons are installed, by running 'npm install react-icons'
