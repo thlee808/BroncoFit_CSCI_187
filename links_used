@@ -2,3 +2,7 @@ https://code.visualstudio.com/docs/nodejs/reactjs-tutorial I followed this to se
 
 https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/ I followed this to set up the menu to support the multiple pages
 - if you get an error saying can't resolve react-icons/fa then make sure that the react icons are installed, by running 'npm install react-icons'
+
+https://www.youtube.com/watch?v=cZAnibwI9u8 good guide for Google Authentication and logging in
+
+https://www.youtube.com/watch?v=k4mjF4sPITE tutorial to create a chat app
