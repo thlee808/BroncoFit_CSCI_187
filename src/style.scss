@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Dancing+Script:wght@700&family=Kalam:wght@300;400;700&family=Pacifico&display=swap');
+
+
+.logo {
+    color: red;
+    font-weight: bold;
+    font-family: 'Dancing Script', cursive;
+}
+
+
+.navContainer {
+    background-color: black;
+    height: 10vh;
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+
+    .menu {
+        color: white;
+        padding: 0px 20px;
+        border: 2px solid red;
+    }
+
+    .navSection {
+        border: 2px solid yellow;
+        display: flex;
+        align-items: center;
+
+
+        .logoContainer {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+
+            .logo {
+                font-size: 60px;
+                color: white;
+            }
+
+            a:link, a:visited, a:active {
+                text-decoration: none;
+            }
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 5px 10px;
+
+            .logoutButton {
+                background-color: lightgrey;
+                color: dark grey;
+                font-size: 25px;
+                border: 2px solid maroon;
+                cursor: pointer;
+                padding: 3px 10px;
+                margin: 10px;
+            }
+
+            .profileButton {
+                
+            }
+        }
+    }
+
+    .section-2 {
+        justify-content: center;
+
+        .imgContainer {
+            width: 100px;
+            height: 50px;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+
+    .section-3 {
+        justify-content: right;
+
+        .imgContainer {
+            width: 50px;
+            height: 50px;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .username {
+            color: white;
+        }
+    }
+}
+
+
+.formContainer {
+    background-color: #fff;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .formWrapper {
+        background-color: #000;
+        padding: 20px 60px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-1 {
+            color: white;
+            font-family: 'Kalam', cursive;
+            font-size: 60px;
+            letter-spacing: 10px;
+        }
+
+        .header-2 {
+            color: white;
+            font-family: 'Kalam', cursive;
+            font-size: 30px;
+            letter-spacing: 5px;
+        }
+
+        .header-3 {
+            color: white;
+            font-family: 'Kalam', cursive;
+            font-size: 15px;
+            letter-spacing: 5px;
+        }
+
+        .logo {
+            font-size: 100px;
+        }
+    }
+}
