@@ -1,10 +1,13 @@
 import React from 'react';
+import Card from '../components/Card';
+import { posts } from "../data";
 
 const Home = () => {
   return (
-    <div>
-      <h1 className='text-center text-3xl font-bold py-8'>Home Page</h1>
-      <a href = '/profile'> go to profile</a>
+    <div className="homeContainer">
+      {posts.map(post => (
+        <Card key={post.id} post={post} />
+      ))}
     </div>
   )
 }
