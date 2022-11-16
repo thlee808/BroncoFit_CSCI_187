@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { auth } from '../firebase'
 import { AuthContext } from '../context/AuthContext'
 import { UserAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -24,9 +24,7 @@ const Navbar = () => {
             <img src="images/barbell.png" alt="barbell" />
           </div>
           <div class="logoContainer">
-            <a href='/home'>
-              <h1 class="logo">BroncoFit</h1>
-            </a>
+            <h1 class="logo"><Link classname="link" to="/home">BroncoFit</Link></h1>
           </div>
           <div class="imgContainer">
             <img src="images/barbell.png" alt="barbell" />
