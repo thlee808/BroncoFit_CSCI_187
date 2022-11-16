@@ -24,7 +24,7 @@ const Navbar = () => {
             <img src="images/barbell.png" alt="barbell" />
           </div>
           <div class="logoContainer">
-            <h1 class="logo"><Link classname="link" to="/home">BroncoFit</Link></h1>
+            <Link className="logo" to="/home">BroncoFit</Link>
           </div>
           <div class="imgContainer">
             <img src="images/barbell.png" alt="barbell" />
