@@ -32,10 +32,6 @@ const Navbar = () => {
       </div>
 
       <div class="navContainer">
-        <div class="menu">
-          <h1>Menu</h1>
-        </div>
-
         <div class="navButtons">
           {user?.displayName ? (
             <div class="buttons">
