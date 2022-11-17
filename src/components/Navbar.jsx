@@ -38,7 +38,7 @@ const Navbar = () => {
               <button class="logoutButton" onClick={ handleSignOut }>Logout</button>
               <a class="profileButton" href='/profile'>
                 <div className="imgContainer">
-                  <img src="images/default_profile_pic.jpg" alt="userphoto" />
+                  <img src={user.photoURL} alt="userphoto" />
                 </div>
               </a>
               <span className="username">{user.displayName}</span>
