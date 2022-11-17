@@ -1,6 +1,7 @@
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
+import EditProfile from "./pages/EditProfile";
 import Workout from "./pages/Workout";
 import Navbar from "./components/Navbar";
 import Protected from './components/Protected';
@@ -20,6 +21,7 @@ function App() {
           <Route path='/home' element={ <Protected><Home /></Protected> } />
           <Route path='/profile' element={ <Protected><Profile /></Protected> } />
           <Route path='/workout' element={ <Protected><Workout /></Protected> } />
+          <Route path='/editprofile' element={ <Protected><EditProfile /></Protected> } />
         </Routes>
       </AuthContextProvider>
     </div>
