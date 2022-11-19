@@ -3,6 +3,7 @@ import { auth } from '../firebase'
 import { AuthContext } from '../context/AuthContext'
 import { UserAuth } from '../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
+import Sidebar from './Sidebar';
 
 
 const Navbar = () => {
@@ -32,6 +33,7 @@ const Navbar = () => {
       </div>
 
       <div class="navContainer">
+        <Sidebar></Sidebar>
         <div class="navButtons">
           {user?.displayName ? (
             <div class="buttons">
