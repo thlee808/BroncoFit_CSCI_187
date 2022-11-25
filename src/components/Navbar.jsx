@@ -3,12 +3,9 @@ import { auth } from '../firebase'
 import { AuthContext } from '../context/AuthContext'
 import { UserAuth } from '../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
-import Sidebar from './Sidebar';
-
 
 const Navbar = () => {
-  const { user, logOut } = UserAuth();
-  const navigate = useNavigate();
+  const { user, logOut } = UserAuth(auth);
 
   const handleSignOut = async () => {
     try {
@@ -33,7 +30,8 @@ const Navbar = () => {
       </div>
 
       <div class="navContainer">
-        <Sidebar></Sidebar>
+        <div className="menu">
+        </div>
         <div class="navButtons">
           {user?.displayName ? (
             <div class="buttons">

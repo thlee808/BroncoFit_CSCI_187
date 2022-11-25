@@ -4,7 +4,6 @@ import { GoogleButton } from "react-google-button";
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
-
 const Login = () => {
 
     const { googleSignIn, user } = UserAuth();
@@ -22,6 +21,7 @@ const Login = () => {
       if (user != null) {
         navigate('/home');
       }
+
     }, [user]);
 
 
