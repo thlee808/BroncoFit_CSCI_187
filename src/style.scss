@@ -163,6 +163,17 @@
     padding: 20px 30px;
 }
 
+.profileContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    border: 2px solid red;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto
+}
+
 .feedContainer {
     display: flex;
     flex-direction: column;

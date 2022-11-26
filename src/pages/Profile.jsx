@@ -10,12 +10,14 @@ const Profile = () => {
   };
 
   return (
-    <div className='w-[300px] m-auto'>
+    <div class='profileContainer'>
       <h1 className='text-center text-2xl font-bold pt-12'>Your Profile</h1>
       <div>
         <p>Welcome, {user?.displayName}</p>
       </div>
-      <img src={'images/default_profile_pic.jpg'}></img>
+      <div className="imgContainer">
+                  <img src={user.photoURL} alt="userphoto" />
+                </div>
       <h1 className='text-center text-2xl font-bold pt-12'>Personal Details</h1>
       <div>
         <p>Height:</p>
