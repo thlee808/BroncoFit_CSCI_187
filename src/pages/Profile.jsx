@@ -16,7 +16,7 @@ const Profile = () => {
         <p>Welcome, {user?.displayName}</p>
       </div>
       <div className="imgContainer">
-                  <img src={user.photoURL} alt="userphoto" />
+                  <img src={user.photoURL} alt="userphoto" referrerPolicy="no-referrer"/>
                 </div>
       <h1 className='text-center text-2xl font-bold pt-12'>Personal Details</h1>
       <div>
