@@ -18,20 +18,12 @@ const Navbar = () => {
   //shows the sideNav menu by changing the value of the sideNav's width
   const openNav = () => {
     document.getElementById("mySidenav").style.width = "200px";
-    console.log("open Nav")    //this check works
   }
-  /*function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-  }*/
 
   //close sideNav by setting width value back to 0
   const closeNav = () => {
     document.getElementById("mySidenav").style.width = "0px";
-    console.log("close Nav")
   }
-  /*function closeNav() {
-    document.getElementById("mySidenav").style.width = "0px";
-  }*/
 
   return (
     <div>
@@ -51,7 +43,6 @@ const Navbar = () => {
         
         {/*Button to open sidenav */}
         <div class="menuButtonContainer" onClick={ openNav }>
-        {/*<div class="menuButtonContainer">*/}
           <div class="bar1"></div>
           <div class="bar2"></div>
           <div class="bar3"></div>
@@ -59,8 +50,6 @@ const Navbar = () => {
 
         {/*Elements in sidenav menu*/}
         <div id="mySidenav" class="sidenav">
-          {/*used href='/home' instead of the href='javascript:void(0)' in the example*/}
-          {/*<a href='/home' class="closebtn" onClick={ closeNav }>&times;</a>*/}
           <div class="closebtn" onClick={ closeNav }>&times;</div>
           <a href='/home'>Home</a>
           <a href='/profile'>Profile</a>

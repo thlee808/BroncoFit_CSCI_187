@@ -51,7 +51,6 @@
     .menuButtonContainer {      //this is the menu button used to open sidenav
         display: inline-block;
         cursor: pointer;
-        //right: 30px;
 
         .bar1, .bar2, .bar3 {
             width: 35px;
@@ -61,20 +60,20 @@
         }
     }
 
-    .sidenav {      //sidenav menu itself
+    .sidenav {                      //sidenav menu itself
         height: 100%;
-        width: 0;   //function changes the width of sidenav to reveal it to user
+        width: 0;       //function changes the width of sidenav to reveal it to user
         position: fixed;
-        z-index: 1; //stays on top
+        z-index: 1;                 //stays on top
         top: 0;
         left: 0;
         background-color: black;  //same as NavBar
-        overflow-x: hidden; //disable horizontal scroll
-        padding-top: 60px;  //Place content 60px from the top
-        transition: 0.5s;   //0.5 second transition effect to slide in the sidenav
+        overflow-x: hidden;         //disable horizontal scroll
+        padding-top: 60px;          //Place content 60px from the top
+        transition: 0.5s;           //0.5 second transition effect to slide in the sidenav
     }
 
-    .sidenav a {    //nav menu links
+    .sidenav a {                    //nav menu links
         padding: 8px 8px 8px 32px;
         text-decoration: none;
         font-size: 25px;
