@@ -11,6 +11,7 @@ const EditProfile = () => {
 
   const [userWeight, setUserWeight] = useState("");
   const [userHeight, setUserHeight] = useState("");
+  let [update, setUpdate] = React.useState(false);
 
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState(null);
@@ -21,16 +22,28 @@ const EditProfile = () => {
     }
   };
 
-  const submit = async (e) => {
+  const handleUpdate = () => {
+    setUpdate(update = true);
+  };
+
+  const submitHeight = async (e) => {
+    handleUpdate();
     e.preventDefault();
     const data = {
       Height: userHeight,
-      Weight: userWeight,
     };
     setUserHeight("");
+    await updateDoc(doc(db, "users", user.uid), data);
+  }
+  const submitWeight = async (e) => {
+    e.preventDefault();
+    const data = {
+      Weight: userWeight,
+    };
     setUserWeight("");
     await updateDoc(doc(db, "users", user.uid), data);
   }
+
 
 
   const handleSubmit = () => {
@@ -52,10 +65,13 @@ const EditProfile = () => {
   };
 
   return (
-    <div className='w-[300px] m-auto'>
-      <h1 className='text-center text-2xl font-bold pt-12'>Your Profile</h1>
+    <div class='profileContainer'>
+      <h1 className='text-center text-2xl font-bold pt-12'>Edit Your Profile</h1>
       <div>
         <p>{user?.displayName}</p>
+        <div className="imgContainer">
+             <img src={user.photoURL} alt="userphoto" referrerPolicy="no-referrer"/>
+        </div>
         <p>Change profile picture:</p>
       </div>
       <div className="App">
@@ -63,22 +79,29 @@ const EditProfile = () => {
       <input type="file" onChange={handleImageChange} />
       <button onClick={handleSubmit}>Submit</button>
     </div>
-    <div className="App__form">
+    <p>Update height and weight:</p>
+    <div className="HeightForm">
         <input
           type="text"
           placeholder="Height"
           value={userHeight}
           onChange={(e) => setUserHeight(e.target.value)}
         />
+                <button onClick={submitHeight}>Submit</button>
+        </div>
+        <div className="WeightForm">
+
         <input
           type="text"
           placeholder="Weight"
           value={userWeight}
           onChange={(e) => setUserWeight(e.target.value)}
         />
-        <button onClick={submit}>Submit</button>
+        <button onClick={submitWeight}>Submit</button>
       </div>
-
+      <div class="success">
+      <p >{ update? ("Profile Successfully Updated") : "" }</p>
+      </div>
     </div>
   );
 };
