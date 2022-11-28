@@ -2,11 +2,15 @@ import React from 'react';
 import { UserAuth } from '../context/AuthContext';
 import { useState } from "react";
 import { storage } from "../firebase";
+import db from "../firebase";
+import { doc, setDoc, updateDoc } from "firebase/firestore"; 
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const EditProfile = () => {
   const { user } = UserAuth();
 
+  const [userWeight, setUserWeight] = useState("");
+  const [userHeight, setUserHeight] = useState("");
 
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState(null);
@@ -16,6 +20,17 @@ const EditProfile = () => {
       setImage(e.target.files[0]);
     }
   };
+
+  const submit = async (e) => {
+    e.preventDefault();
+    const data = {
+      Height: userHeight,
+      Weight: userWeight,
+    };
+    setUserHeight("");
+    setUserWeight("");
+    await updateDoc(doc(db, "users", user.uid), data);
+  }
 
 
   const handleSubmit = () => {
@@ -48,6 +63,22 @@ const EditProfile = () => {
       <input type="file" onChange={handleImageChange} />
       <button onClick={handleSubmit}>Submit</button>
     </div>
+    <div className="App__form">
+        <input
+          type="text"
+          placeholder="Height"
+          value={userHeight}
+          onChange={(e) => setUserHeight(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Weight"
+          value={userWeight}
+          onChange={(e) => setUserWeight(e.target.value)}
+        />
+        <button onClick={submit}>Submit</button>
+      </div>
+
     </div>
   );
 };
