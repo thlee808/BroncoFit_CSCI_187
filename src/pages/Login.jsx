@@ -3,6 +3,13 @@ import { UserAuth } from "../context/AuthContext";
 import { GoogleButton } from "react-google-button";
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import {
+  getRedirectResult,
+  getAdditionalUserInfo,
+} from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { auth, db } from "../firebase";
+
 
 const Login = () => {
 
@@ -17,11 +24,36 @@ const Login = () => {
       }
     };
   
+
     useEffect(() => {
-      if (user != null) {
+      if (user != null){
         navigate('/home');
       }
+      getRedirectResult(auth)
+      .then((res)=>{
+        if(res!=null){
+          const details = getAdditionalUserInfo(res);
+          if (details.isNewUser){
+            console.log("isnewuser");
 
+            const displayName = res.user.displayName;
+            const email = res.user.email;
+            const photoURL = res.user.photoURL;
+
+            setDoc(doc(db, "users", res.user.uid), {
+              uid: res.user.uid,
+              displayName,
+              email,
+              photoURL,
+            });
+
+
+            navigate('/editprofile');
+            setDoc(doc(db, "userChats", res.user.uid), {});
+            alert("Please add profile information as a new user!");
+          }
+        }
+      })
     }, [user]);
 
 

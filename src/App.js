@@ -10,21 +10,24 @@ import "./style.scss";
 
 import { Route, Routes } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
+import { ChatContextProvider } from "./context/ChatContext";
 
 
 function App() {
   return (
     <div>
       <AuthContextProvider>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<Login />} />
-          <Route path='/home' element={ <Protected><Home /></Protected> } />
-          <Route path='/profile' element={ <Protected><Profile /></Protected> } />
-          <Route path='/chatpage' element={ <Protected><ChatPage /></Protected> } />
-          <Route path='/workout' element={ <Protected><Workout /></Protected> } />
-          <Route path='/editprofile' element={ <Protected><EditProfile /></Protected> } />
-        </Routes>
+        <ChatContextProvider>
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<Login />} />
+            <Route path='/home' element={ <Protected><Home /></Protected> } />
+            <Route path='/profile' element={ <Protected><Profile /></Protected> } />
+            <Route path='/chatpage' element={ <Protected><ChatPage /></Protected> } />
+            <Route path='/workout' element={ <Protected><Workout /></Protected> } />
+            <Route path='/editprofile' element={ <Protected><EditProfile /></Protected> } />
+          </Routes>
+        </ChatContextProvider>
       </AuthContextProvider>
     </div>
   );

@@ -1,38 +1,52 @@
-import React from 'react'
+import { doc, onSnapshot } from "firebase/firestore";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { ChatContext } from "../context/ChatContext";
+import { db } from "../firebase";
+import { UserAuth } from '../context/AuthContext';
+import { auth } from '../firebase'
 
 const Chats = () => {
-  return (
-    <div className="chats">
-        <div className="userChat">
-            <img src="images/default_profile_pic.jpg" alt="user_photo" />
+    const [chats, setChats] = useState([]);
+  
+    const { user } = UserAuth(auth);
+    const { dispatch } = useContext(ChatContext);
+  
+    useEffect(() => {
+      const getChats = () => {
+        const unsub = onSnapshot(doc(db, "userChats", user.uid), (doc) => {
+          setChats(doc.data());
+        });
+  
+        return () => {
+          unsub();
+        };
+      };
+  
+      user.uid && getChats();
+    }, [user.uid]);
+  
+    const handleSelect = (u) => {
+      dispatch({ type: "CHANGE_USER", payload: u });
+    };
+  
+    return (
+      <div className="chats">
+        {Object.entries(chats)?.sort((a,b)=>b[1].date - a[1].date).map((chat) => (
+          <div
+            className="userChat"
+            key={chat[0]}
+            onClick={() => handleSelect(chat[1].userInfo)}
+          >
+            <img src={chat[1].userInfo.photoURL} alt="" referrerPolicy="no-referrer"/>
             <div className="userChatInfo">
-                <span>John Doe</span>
-                <p>Hello</p>
+              <span>{chat[1].userInfo.displayName}</span>
+              <p>{chat[1].lastMessage?.text}</p>
             </div>
-        </div>
-        <div className="userChat">
-            <img src="images/default_profile_pic.jpg" alt="user_photo" />
-            <div className="userChatInfo">
-                <span>John Doe</span>
-                <p>Hello</p>
-            </div>
-        </div>
-        <div className="userChat">
-            <img src="images/default_profile_pic.jpg" alt="user_photo" />
-            <div className="userChatInfo">
-                <span>John Doe</span>
-                <p>Hello</p>
-            </div>
-        </div>
-        <div className="userChat">
-            <img src="images/default_profile_pic.jpg" alt="user_photo" />
-            <div className="userChatInfo">
-                <span>John Doe</span>
-                <p>Hello</p>
-            </div>
-        </div>
-    </div>
-  )
-}
+          </div>
+        ))}
+      </div>
+    );
+  };
 
 export default Chats

@@ -16,15 +16,15 @@ const Profile = () => {
     const docRef = doc(db, "users", user.uid);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      //console.log("Document data:", docSnap.data());
+      console.log("Document data:", docSnap.data());
     } else {
-      //console.log("No such document!");
+      console.log("No such document!");
     }
     return docSnap;
   }
+  
+    getData().then(result => { setAns(result.data()) } );
 
-
-  getData().then(result => { setAns(result.data()) } );
 
 
 
@@ -41,6 +41,11 @@ const Profile = () => {
       <div>
         <p>Height: { ans? (ans.Height) : "Not yet set"}</p>
         <p>Weight: { ans? (ans.Weight) : "Not yet set" }</p>
+      </div>
+      <h1 className='text-center text-2xl font-bold pt-12'>Personal Bests</h1>
+      <div>
+        <p>Deadlift: { ans? (ans.Lift) : "Not yet set"}</p>
+        <p>Squats: { ans? (ans.Squat) : "Not yet set" }</p>
       </div>
       <h1 className='text-center text-2xl font-bold pt-12'>Interests</h1>
       <div>
