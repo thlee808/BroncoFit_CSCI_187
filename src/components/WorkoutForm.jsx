@@ -118,20 +118,27 @@ const WorkoutForm = () => {
             weightInput4:weightInput4,
         }
         e.preventDefault();
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        today = mm + '_' + dd + '_' + yyyy;
+
         try {
-            await updateDoc(doc(db, "users", user.uid), workoutObj);    //only fails if doc doesn't exist
+            //creates a collection of workout documents for each user using their uid to name collection
+            //date is the name of the document for the workout
+            await updateDoc(doc(db, user.uid, today), workoutObj);    //only fails if doc doesn't exist
         } catch {                                                   
-            setDoc(doc(db, "users", user.uid), workoutObj);
+            setDoc(doc(db, user.uid, today), workoutObj);
         }
 
-
-        /*const newPostKey = push(child(ref(database), 'posts')).key;
-        const updates = {};
-        updates['/' + newPostKey] = obj
-        return update(ref(database), updates);*/
+        if(workoutObj) {
+            console.log("exists");
+        }
 
         console.log(user.uid);
-        
+
         console.log(workoutName,lengthHours,lengthMinutes,
             nameExercise1,numSetsInput1,numRepsInput1,weightInput1,
             nameExercise2,numSetsInput2,numRepsInput2,weightInput2,
