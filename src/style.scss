@@ -477,3 +477,40 @@
     }
 }
 
+.workoutPage {
+    background-color: white;
+
+    .form{
+        background-color: white;
+        border-radius: 5px;
+        width: 650px;
+        margin: 20px auto;
+        padding: 20px;
+        /* height: 600px; */
+    }
+
+    .form-body{
+        text-align: left;
+        padding: 20px 10px;
+    }
+
+    .form-body > *{
+        padding: 5px;
+    }
+
+    .form__text{
+        width: 100%;
+    }
+    
+    .form__label{
+        width: 50%;
+    }
+    
+    .form_input{
+        width: 50%;
+    }
+    
+    .footer{
+        text-align: center;
+    }
+}
