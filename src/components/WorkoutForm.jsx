@@ -119,6 +119,7 @@ const WorkoutForm = () => {
         }
         e.preventDefault();
 
+        //generate date for document title
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -132,18 +133,6 @@ const WorkoutForm = () => {
         } catch {                                                   
             setDoc(doc(db, user.uid, today), workoutObj);
         }
-
-        if(workoutObj) {
-            console.log("exists");
-        }
-
-        console.log(user.uid);
-
-        console.log(workoutName,lengthHours,lengthMinutes,
-            nameExercise1,numSetsInput1,numRepsInput1,weightInput1,
-            nameExercise2,numSetsInput2,numRepsInput2,weightInput2,
-            nameExercise3,numSetsInput3,numRepsInput3,weightInput3,
-            nameExercise4,numSetsInput4,numRepsInput4,weightInput4);
     }
 
     return (
