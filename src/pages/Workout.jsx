@@ -3,12 +3,17 @@ import WorkoutForm from "../components/WorkoutForm";
 
 const Workout = () => {
   return (
-    <nav class="bg-dark navbar-dark navbar">
-        <div className="workoutHeader">
-        {/*<div className="row col-12 d-flex justify-content-center text-white">*/}
+    <div className="workoutPage">
+      <nav class="bg-dark navbar-dark navbar">
+        <div className="row col-12 d-flex justify-content-center text-white">
           <h3>Workout Form</h3>
         </div>
-    </nav>
+      </nav>
+      <div className="workoutFormContainer">
+        <WorkoutForm></WorkoutForm>
+      </div>
+    </div>
+    
   )
 }
 
