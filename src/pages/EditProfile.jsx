@@ -33,7 +33,11 @@ const EditProfile = () => {
       Height: userHeight,
     };
     setUserHeight("");
+    try {
     await updateDoc(doc(db, "users", user.uid), data);
+    } catch {
+      setDoc(doc(db, "users", user.uid), data);
+    }
   }
   const submitWeight = async (e) => {
     e.preventDefault();
@@ -41,7 +45,12 @@ const EditProfile = () => {
       Weight: userWeight,
     };
     setUserWeight("");
+    try {
     await updateDoc(doc(db, "users", user.uid), data);
+    } catch {
+      updateDoc(doc(db, "users", user.uid), data);
+    }
+
   }
 
 

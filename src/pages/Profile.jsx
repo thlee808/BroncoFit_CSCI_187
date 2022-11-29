@@ -39,8 +39,8 @@ const Profile = () => {
                 </div>
       <h1 className='text-center text-2xl font-bold pt-12'>Personal Details</h1>
       <div>
-        <p>Height: { ans.Height? (ans.Height) : "Not yet set"}</p>
-        <p>Weight: { ans.Weight? (ans.Weight) : "Not yet set" }</p>
+        <p>Height: { ans? (ans.Height) : "Not yet set"}</p>
+        <p>Weight: { ans? (ans.Weight) : "Not yet set" }</p>
       </div>
       <h1 className='text-center text-2xl font-bold pt-12'>Interests</h1>
       <div>
