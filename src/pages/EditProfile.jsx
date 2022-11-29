@@ -8,9 +8,11 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const EditProfile = () => {
   const { user } = UserAuth();
-
   const [userWeight, setUserWeight] = useState("");
   const [userHeight, setUserHeight] = useState("");
+  const [userLift, setUserLift] = useState("");
+  const [userSquat, setUserSquat] = useState("");
+
   let [update, setUpdate] = React.useState(false);
 
   const [image, setImage] = useState(null);
@@ -40,6 +42,7 @@ const EditProfile = () => {
     }
   }
   const submitWeight = async (e) => {
+    handleUpdate();
     e.preventDefault();
     const data = {
       Weight: userWeight,
@@ -50,10 +53,35 @@ const EditProfile = () => {
     } catch {
       updateDoc(doc(db, "users", user.uid), data);
     }
-
   }
 
+  const submitLift = async (e) => {
+    handleUpdate();
+    e.preventDefault();
+    const data = {
+      Lift: userLift,
+    };
+    setUserLift("");
+    try {
+    await updateDoc(doc(db, "users", user.uid), data);
+    } catch {
+      updateDoc(doc(db, "users", user.uid), data);
+    }
+  }
 
+  const submitSquat = async (e) => {
+    handleUpdate();
+    e.preventDefault();
+    const data = {
+      Squat: userSquat,
+    };
+    setUserSquat("");
+    try {
+    await updateDoc(doc(db, "users", user.uid), data);
+    } catch {
+      updateDoc(doc(db, "users", user.uid), data);
+    }
+  }
 
   const handleSubmit = () => {
     const imageRef = ref(storage, "image");
@@ -108,6 +136,25 @@ const EditProfile = () => {
         />
         <button onClick={submitWeight}>Submit</button>
       </div>
+      <p>Update Personal Bests:</p>
+      <div className="LiftForm">
+        <input
+          type="text"
+          placeholder="Deadlift"
+          value={userLift}
+          onChange={(e) => setUserLift(e.target.value)}
+        />
+                <button onClick={submitLift}>Submit</button>
+        </div>
+        <div className="SquatForm">
+        <input
+          type="text"
+          placeholder="Squats"
+          value={userSquat}
+          onChange={(e) => setUserSquat(e.target.value)}
+        />
+                <button onClick={submitSquat}>Submit</button>
+        </div>
       <div class="success">
       <p >{ update? ("Profile Successfully Updated") : "" }</p>
       </div>
