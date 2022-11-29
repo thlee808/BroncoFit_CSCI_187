@@ -4,13 +4,12 @@ import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDUn1As6gh0ZlATuCdmplbdpNrbk9s6oHg",
-  authDomain: "broncofit2.firebaseapp.com",
-  projectId: "broncofit2",
-  storageBucket: "broncofit2.appspot.com",
-  messagingSenderId: "822190385545",
-  appId: "1:822190385545:web:0d8a884c0361be8e589958",
-  measurementId: "G-YE81B4YLB2"
+  apiKey: "AIzaSyCAQ1U7rZcYEMcM6mI9couvOY9evDufm04",
+  authDomain: "broncofit-extraspace.firebaseapp.com",
+  projectId: "broncofit-extraspace",
+  storageBucket: "broncofit-extraspace.appspot.com",
+  messagingSenderId: "74307945817",
+  appId: "1:74307945817:web:b7ca390dedeb6e2386b848"
 };
 
 // Initialize Firebase

@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Messages from './Messages'
 import Input from './Input'
+import { UserAuth } from '../context/AuthContext';
+import { auth } from '../firebase'
+import userEvent from '@testing-library/user-event';
+import { ChatContext } from "../context/ChatContext";
 
 const Chat = () => {
+
+  const { data } = useContext(ChatContext);
+
+
   return (
     <div className='chat'>
         <div className="chatInfo">
-            <span>John Doe</span>
+            <span>{data.user?.displayName}</span>
             <div className="chatIcons">
                 <img src="images/default_profile_pic.jpg" alt="" />
                 <img src="images/default_profile_pic.jpg" alt="" />

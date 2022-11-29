@@ -35,6 +35,19 @@ const Login = () => {
           const details = getAdditionalUserInfo(res);
           if (details.isNewUser){
             console.log("isnewuser");
+
+            const displayName = res.user.displayName;
+            const email = res.user.email;
+            const photoURL = res.user.photoURL;
+
+            setDoc(doc(db, "users", res.user.uid), {
+              uid: res.user.uid,
+              displayName,
+              email,
+              photoURL,
+            });
+
+
             navigate('/editprofile');
             setDoc(doc(db, "userChats", res.user.uid), {});
             alert("Please add profile information as a new user!");
