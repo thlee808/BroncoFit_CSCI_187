@@ -4,8 +4,8 @@ import WorkoutForm from "../components/WorkoutForm";
 const Workout = () => {
   return (
     <div className="workoutPage">
-      <nav class="bg-dark navbar-dark navbar">
-        <div className="row col-12 d-flex justify-content-center text-white">
+      <nav class="navbar">
+        <div className="header">
           <h3>Workout Form</h3>
         </div>
       </nav>

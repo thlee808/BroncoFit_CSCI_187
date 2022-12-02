@@ -102,7 +102,7 @@ const EditProfile = () => {
   };
 
   return (
-    <div class='profileContainer'>
+    <div className='profileContainer'>
       <h1 className='text-center text-2xl font-bold pt-12'>Edit Your Profile</h1>
       <div>
         <p>{user?.displayName}</p>
@@ -155,7 +155,7 @@ const EditProfile = () => {
         />
                 <button onClick={submitSquat}>Submit</button>
         </div>
-      <div class="success">
+      <div className="success">
       <p >{ update? ("Profile Successfully Updated") : "" }</p>
       </div>
     </div>

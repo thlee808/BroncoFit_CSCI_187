@@ -27,30 +27,30 @@ const Navbar = () => {
 
   return (
     <div>
-      <div class="navHeader">
-          <div class="imgContainer">
+      <div className="navHeader">
+          <div className="imgContainer">
             <img src="images/barbell.png" alt="barbell" />
           </div>
-          <div class="logoContainer">
+          <div className="logoContainer">
             <Link className="logo" to="/home">BroncoFit</Link>
           </div>
-          <div class="imgContainer">
+          <div className="imgContainer">
             <img src="images/barbell.png" alt="barbell" />
           </div>
       </div>
 
-      <div class="navContainer">
+      <div className="navbar">
         
         {/*Button to open sidenav */}
-        <div class="menuButtonContainer" onClick={ openNav }>
-          <div class="bar1"></div>
-          <div class="bar2"></div>
-          <div class="bar3"></div>
+        <div className="menuButtonContainer" onClick={ openNav }>
+          <div className="bar1"></div>
+          <div className="bar2"></div>
+          <div className="bar3"></div>
         </div>
 
         {/*Elements in sidenav menu*/}
-        <div id="mySidenav" class="sidenav">
-          <div class="closebtn" onClick={ closeNav }>&times;</div>
+        <div id="mySidenav" className="sidenav">
+          <div className="closebtn" onClick={ closeNav }>&times;</div>
           <a href='/home'>Home</a>
           <a href='/profile'>Profile</a>
           <a href='/chatpage'>Chatpage</a>
@@ -58,11 +58,11 @@ const Navbar = () => {
         </div>
         
 
-        <div class="navButtons">
+        <div className="navButtons">
           {user?.displayName ? (
-            <div class="buttons">
-              <button class="logoutButton" onClick={ handleSignOut }>Logout</button>
-              <a class="profileButton" href='/profile'>
+            <div className="buttons">
+              <button className="logoutButton" onClick={ handleSignOut }>Logout</button>
+              <a className="profileButton" href='/profile'>
                 <div className="imgContainer">
                   <img src={user.photoURL} alt="userphoto" referrerPolicy="no-referrer" />
                 </div>

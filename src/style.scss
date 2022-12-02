@@ -14,10 +14,11 @@
     top: 5px;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 20;
 
 
     .logoContainer {
-        padding: 10px 20px;
+        padding: 0px 20px;
 
         .logo {
             font-size: 60px;
@@ -40,11 +41,10 @@
     }
 }
 
-.navContainer {
+.navbar {
     background-color: black;
     height: 100px;
     display: flex;
-    flex-basis: 100%;
     align-items: center;
     justify-content: space-between;
 
@@ -121,11 +121,10 @@
     .navButtons {
         display: flex;
         align-items: center;
-
+        padding: 0px 10px;
 
         .buttons {
             display: flex;
-            flex-direction: row;
             align-items: center;
             padding: 5px 10px;
 
@@ -133,14 +132,9 @@
                 background-color: lightgrey;
                 color: dark grey;
                 font-size: 25px;
-                border: 2px solid maroon;
                 cursor: pointer;
                 padding: 3px 10px;
                 margin: 10px;
-            }
-
-            .profileButton {
-                
             }
         }
 
@@ -285,7 +279,7 @@
     align-items: center;
     justify-content: center;
 
-    .container {
+    .chatContainer {
         border: 1px solid black;
         border-radius: 10px;
         width: 80%;
@@ -478,7 +472,23 @@
 }
 
 .workoutPage {
-    background-color: white;
+    height: 900px;
+    background-color: gray;
+    
+    .navbar {
+        display: flex;
+        height: 6vh;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        background-color: #36454F;
+
+        .header {
+            color: white;
+            font-size: 25px;
+        }
+    }
+
 
     .form{
         background-color: white;
@@ -490,6 +500,8 @@
     }
 
     .form-body{
+        display: flex;
+        flex-direction: column;
         text-align: left;
         padding: 20px 10px;
     }

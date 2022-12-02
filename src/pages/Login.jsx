@@ -7,9 +7,10 @@ import {
   getRedirectResult,
   getAdditionalUserInfo,
 } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { collection, doc, setDoc, query, where } from "firebase/firestore"; 
 import { auth, db } from "../firebase";
-
+import { nouns } from "../nouns";
+import { adjectives } from "../adjectives";
 
 const Login = () => {
 
@@ -24,36 +25,63 @@ const Login = () => {
       }
     };
   
+    
+    function generateUsername() {
+      let username = "";
+      username += adjectives[Math.floor(Math.random() * adjectives.length)];
+      username += nouns[Math.floor(Math.random() * nouns.length)];
+      return username;
+    }
 
     useEffect(() => {
       if (user != null){
         navigate('/home');
-      }
-      getRedirectResult(auth)
-      .then((res)=>{
-        if(res!=null){
-          const details = getAdditionalUserInfo(res);
-          if (details.isNewUser){
-            console.log("isnewuser");
+        getRedirectResult(auth)
+        .then((res)=>{
+          if(res!=null){
+            const details = getAdditionalUserInfo(res);
+            if (details.isNewUser){
+              console.log("isnewuser");
 
-            const displayName = res.user.displayName;
-            const email = res.user.email;
-            const photoURL = res.user.photoURL;
+              let username;
+              let validUsername = false;
+              var usersRef = collection(db, "users");
 
-            setDoc(doc(db, "users", res.user.uid), {
-              uid: res.user.uid,
-              displayName,
-              email,
-              photoURL,
-            });
+              while (!validUsername){
+                username = generateUsername();
+                console.log(username);
+                usersRef.where('username', '==', username).get()
+                  .then(snapshot => {
+                    if (snapshot.empty) {
+                      validUsername = true;
+                    }
+                  })
+              }
 
 
-            navigate('/editprofile');
-            setDoc(doc(db, "userChats", res.user.uid), {});
-            alert("Please add profile information as a new user!");
+              const displayName = res.user.displayName;
+              const email = res.user.email;
+              const photoURL = res.user.photoURL;
+
+              setDoc(doc(db, "users", res.user.uid), {
+                uid: res.user.uid,
+                username,
+                displayName,
+                email,
+                photoURL,
+                createdAt: new Date()
+              });
+
+
+
+
+              navigate('/editprofile');
+              setDoc(doc(db, "userChats", res.user.uid), {});
+              alert("Please add profile information as a new user!");
+            }
           }
-        }
-      })
+        })
+      }
     }, [user]);
 
 

@@ -5,7 +5,7 @@ import Chat from "../components/Chat";
 const ChatPage = () => {
     return (
         <div className="chatpage">
-            <div className="container">
+            <div className="chatContainer">
                 <UserList></UserList>
                 <Chat></Chat>
             </div>

@@ -34,6 +34,9 @@ const Profile = () => {
       <div>
         <p>Welcome, {user?.displayName}</p>
       </div>
+      <div>
+        <p>@{ans?.username}</p>
+      </div>
       <div className="imgContainer">
                   <img src={user.photoURL} alt="userphoto" referrerPolicy="no-referrer"/>
                 </div>

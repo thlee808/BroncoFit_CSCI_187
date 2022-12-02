@@ -136,7 +136,7 @@ const WorkoutForm = () => {
     }
 
     return (
-        <div className="form">
+        <form className="form">
             <div className="form-body">
                 <div className="workoutName">
                     <label className="form__label" for="workoutName">Workout Name: </label>
@@ -216,7 +216,7 @@ const WorkoutForm = () => {
             <div class="footer">
                 <button onClick={ handleSubmit } type="submit" class="btn">Submit Workout</button>
             </div>
-      </div>      
+      </form>      
     )
 }
 
