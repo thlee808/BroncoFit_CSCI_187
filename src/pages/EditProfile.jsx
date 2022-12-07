@@ -7,11 +7,19 @@ import { doc, setDoc, updateDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const EditProfile = () => {
+
+  
+  const getInitialState = () => {
+    const userGender = "Not Specified";
+    return userGender;
+  };
+  
   const { user } = UserAuth();
   const [userWeight, setUserWeight] = useState("");
   const [userHeight, setUserHeight] = useState("");
   const [userLift, setUserLift] = useState("");
   const [userSquat, setUserSquat] = useState("");
+  const [userGender, setUserGender] = useState(getInitialState);
 
   let [update, setUpdate] = React.useState(false);
 
@@ -41,6 +49,22 @@ const EditProfile = () => {
       setDoc(doc(db, "users", user.uid), data);
     }
   }
+  
+  const submitGender = async (e) => {
+    console.log(userGender);
+    handleUpdate();
+    e.preventDefault();
+    const data = {
+      Gender: userGender,
+    };
+    setUserGender("");
+    try {
+    await updateDoc(doc(db, "users", user.uid), data);
+    } catch {
+      setDoc(doc(db, "users", user.uid), data);
+    }
+  }
+
   const submitWeight = async (e) => {
     handleUpdate();
     e.preventDefault();
@@ -83,6 +107,10 @@ const EditProfile = () => {
     }
   }
 
+  const genderChange = (e) => {
+    setUserGender(e.target.value);
+  };
+
   const handleSubmit = () => {
     const imageRef = ref(storage, "image");
     uploadBytes(imageRef, image)
@@ -103,7 +131,11 @@ const EditProfile = () => {
 
   return (
     <div className='profileContainer'>
-      <h1 className='text-center text-2xl font-bold pt-12'>Edit Your Profile</h1>
+      <nav class="navbar">
+        <div className="header">
+          <h3>Editing Your Profile</h3>
+        </div>
+      </nav>
       <div>
         <p>{user?.displayName}</p>
         <div className="imgContainer">
@@ -116,6 +148,17 @@ const EditProfile = () => {
       <input type="file" onChange={handleImageChange} />
       <button onClick={handleSubmit}>Submit</button>
     </div>
+    <p>Update Gender:</p>
+    <div>
+      <select value={userGender} onChange = {genderChange} >  
+        <option value="Not Specified"> Not Specified </option>  
+        <option value="Male"> Male </option>  
+        <option value="Female"> Female </option>  
+        <option value="Other"> Other </option>   
+      </select>  
+      <button onClick={submitGender}>Submit</button>
+      </div>
+
     <p>Update height and weight:</p>
     <div className="HeightForm">
         <input

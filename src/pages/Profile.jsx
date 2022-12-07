@@ -15,7 +15,7 @@ const Profile = () => {
   async function getData() {
     const docRef = doc(db, "users", user.uid);
     const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
+    if (docSnap.exists()      ) {
       console.log("Document data:", docSnap.data());
     } else {
       console.log("No such document!");
@@ -30,7 +30,11 @@ const Profile = () => {
 
   return (
     <div class='profileContainer'>
-      <h1 className='text-center text-2xl font-bold pt-12'>Your Profile</h1>
+       <nav class="navbar">
+        <div className="header">
+          <h3>Your Profile</h3>
+        </div>
+      </nav>
       <div>
         <p>Welcome, {user?.displayName}</p>
       </div>
@@ -42,6 +46,7 @@ const Profile = () => {
                 </div>
       <h1 className='text-center text-2xl font-bold pt-12'>Personal Details</h1>
       <div>
+        <p>Gender: { ans? (ans.Gender) : "Not yet set"}</p>
         <p>Height: { ans? (ans.Height) : "Not yet set"}</p>
         <p>Weight: { ans? (ans.Weight) : "Not yet set" }</p>
       </div>
