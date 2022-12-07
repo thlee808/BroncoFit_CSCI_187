@@ -75,6 +75,7 @@ const Navbar = () => {
           <a href='/profile'>Profile</a>
           <a href='/chatpage'>Chatpage</a>
           <a href='/workout'>Workout</a>
+          <a href='/progress'>Progress</a>
         </div>
         
 

@@ -6,6 +6,7 @@ import Workout from "./pages/Workout";
 import Navbar from "./components/Navbar";
 import Protected from './components/Protected';
 import ChatPage from "./pages/ChatPage";
+import Progress from "./pages/Progress";
 import "./style.scss";
 
 import { Route, Routes } from "react-router-dom";
@@ -26,6 +27,7 @@ function App() {
             <Route path='/chatpage' element={ <Protected><ChatPage /></Protected> } />
             <Route path='/workout' element={ <Protected><Workout /></Protected> } />
             <Route path='/editprofile' element={ <Protected><EditProfile /></Protected> } />
+            <Route path='/progress' element={ <Protected><Progress /></Protected> } />
           </Routes>
         </ChatContextProvider>
       </AuthContextProvider>
