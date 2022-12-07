@@ -19,6 +19,7 @@ const EditProfile = () => {
   const [userHeight, setUserHeight] = useState("");
   const [userLift, setUserLift] = useState("");
   const [userSquat, setUserSquat] = useState("");
+  const [userBench, setUserBench] = useState("");
   const [userGender, setUserGender] = useState(getInitialState);
 
   let [update, setUpdate] = React.useState(false);
@@ -107,6 +108,20 @@ const EditProfile = () => {
     }
   }
 
+  const submitBench = async (e) => {
+    handleUpdate();
+    e.preventDefault();
+    const data = {
+      Bench: userBench,
+    };
+    setUserBench("");
+    try {
+    await updateDoc(doc(db, "users", user.uid), data);
+    } catch {
+      setDoc(doc(db, "users", user.uid), data);
+    }
+  }
+  
   const genderChange = (e) => {
     setUserGender(e.target.value);
   };
@@ -202,6 +217,15 @@ const EditProfile = () => {
           onChange={(e) => setUserSquat(e.target.value)}
         />
                 <button onClick={submitSquat}>Submit</button>
+        </div>
+        <div className="BenchForm">
+        <input
+          type="text"
+          placeholder="Bench"
+          value={userBench}
+          onChange={(e) => setUserBench(e.target.value)}
+        />
+                <button onClick={submitBench}>Submit</button>
         </div>
       <div className="success">
       <p >{ update? ("Profile Successfully Updated") : "" }</p>

@@ -57,6 +57,7 @@ const Profile = () => {
       <div>
         <p>Deadlift: { ans? (ans.Lift) : "Not yet set"}</p>
         <p>Squats: { ans? (ans.Squat) : "Not yet set" }</p>
+        <p>Bench: { ans? (ans.Bench) : "Not yet set" }</p>
       </div>
       {/*
       <h1 className='text-center text-2xl font-bold pt-12'>Interests</h1>
