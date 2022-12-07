@@ -84,7 +84,7 @@ const Navbar = () => {
               <button className="logoutButton" onClick={ handleSignOut }>Logout</button>
               <a className="profileButton" href='/profile'>
                 <div className="imgContainer">
-                  <img src={ans.photoURL} alt="userphoto" referrerPolicy="no-referrer" />
+                  <img src={ans? ans.photoURL : user.photoURL} alt="userphoto" referrerPolicy="no-referrer" />
                 </div>
               </a>
               <span className="username">{user.displayName}</span>

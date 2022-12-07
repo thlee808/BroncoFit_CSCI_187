@@ -45,7 +45,7 @@ const Profile = () => {
         <p>@{ans?.username}</p>
       </div>
       <div className="imgContainer">
-                  <img src={ans.photoURL} alt="userphoto" referrerPolicy="no-referrer"/>
+                  <img src={ans? ans.photoURL : user.photoURL} alt="userphoto" referrerPolicy="no-referrer"/>
                 </div>
       <h1 className='text-center text-2xl font-bold pt-12'>Personal Details</h1>
       <div>
