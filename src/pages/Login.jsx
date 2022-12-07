@@ -72,8 +72,8 @@ const Login = () => {
 
 
     return (
-        <div className="formContainer">
-            <div className="formWrapper">
+        <div className="loginContainer">
+            <div className="loginWrapper">
                 <div className="title">
                     <span className="header-1">SIGN IN</span>
                     <span className="header-2">To</span>
