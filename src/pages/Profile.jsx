@@ -58,8 +58,10 @@ const Profile = () => {
         <p>Deadlift: { ans? (ans.Lift) : "Not yet set"}</p>
         <p>Squats: { ans? (ans.Squat) : "Not yet set" }</p>
       </div>
+      {/*
       <h1 className='text-center text-2xl font-bold pt-12'>Interests</h1>
-      <div>
+      
+       <div>
       <button onClick={handleOpen}>Show All Interests</button>
       {open ? (
         <ul className="menu">
@@ -72,6 +74,7 @@ const Profile = () => {
         </ul>
       ) : null}
     </div>
+      */}
       <a href="/EditProfile">Edit Profile</a>
     </div>
   );
