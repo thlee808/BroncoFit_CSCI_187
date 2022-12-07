@@ -7,7 +7,7 @@ import {
   getRedirectResult,
   getAdditionalUserInfo,
 } from "firebase/auth";
-import { collection, doc, setDoc, query, where } from "firebase/firestore"; 
+import { collection, doc, setDoc, query, where, getDocs, get } from "firebase/firestore"; 
 import { auth, db } from "../firebase";
 import { nouns } from "../nouns";
 import { adjectives } from "../adjectives";
@@ -28,6 +28,7 @@ const Login = () => {
     
     function generateUsername() {
       let username = "";
+
       username += adjectives[Math.floor(Math.random() * adjectives.length)];
       username += nouns[Math.floor(Math.random() * nouns.length)];
       return username;
@@ -43,21 +44,6 @@ const Login = () => {
             if (details.isNewUser){
               console.log("isnewuser");
 
-              let username;
-              let validUsername = false;
-              var usersRef = collection(db, "users");
-
-              while (!validUsername){
-                username = generateUsername();
-                console.log(username);
-                usersRef.where('username', '==', username).get()
-                  .then(snapshot => {
-                    if (snapshot.empty) {
-                      validUsername = true;
-                    }
-                  })
-              }
-
 
               const displayName = res.user.displayName;
               const email = res.user.email;
@@ -65,7 +51,7 @@ const Login = () => {
 
               setDoc(doc(db, "users", res.user.uid), {
                 uid: res.user.uid,
-                username,
+                username: res.user.uid,
                 displayName,
                 email,
                 photoURL,
