@@ -222,7 +222,6 @@
 .homeContainer {
     display: flex;
     flex-direction: row;
-    border: 2px solid yellow;
     justify-content: center;
     padding: 20px 30px;
 }
@@ -582,6 +581,24 @@
             cursor: pointer;
             width: 80%;
             font-size: 20px;
+        }
+    }
+}
+.progressPage {
+    height: 900px;
+    background-color: gray;
+
+    .navbar {
+        display: flex;
+        height: 6vh;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        background-color: #36454F;
+
+        .header {
+            color: white;
+            font-size: 25px;
         }
     }
 }
