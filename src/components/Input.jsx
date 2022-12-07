@@ -46,6 +46,9 @@ const Input = () => {
         }
       );
     } else {
+      if(text.trim().length == 0){
+        return;
+      }
       await updateDoc(doc(db, "chats", data.chatId), {
         messages: arrayUnion({
           id: uuid(),
@@ -75,12 +78,20 @@ const Input = () => {
   };
 
 
+  function handleKeyPress(e) {
+    if(e.which === 13) {
+      handleSend();
+    }
+  }
+
   return (
     <div className='input'>
       <input type="text" 
              placeholder='Type something...'
              onChange={(e) => setText(e.target.value)}
-             value={text}/>
+             value={text}
+             onKeyPress={(e) => handleKeyPress(e)}
+             />
       <div className="send">
         <img src="" alt="" />
         <input

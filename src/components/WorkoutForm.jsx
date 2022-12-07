@@ -79,6 +79,7 @@ const WorkoutForm = () => {
         } catch {                                                   
             setDoc(doc(db, user.uid, today), workoutObj);
         }
+        window.location.reload();
     }
 
     return (
