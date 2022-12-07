@@ -14,11 +14,16 @@ const Home = () => {
                 <h1>Warmups for you:</h1>
                   <h1>5 min warmup</h1>
                     <YoutubeEmbed embedId="CSrBaHX3HxQ" />
+                  <h1>Warmup Infographics</h1>
+                    <Card post={posts[3]} />
+                    <Card post={posts[4]} />
                   <h1>10 min warmup</h1>
                     <YoutubeEmbed embedId="awBQVJ39sKM" />
                   <h1>15 min warmup</h1>
                     <YoutubeEmbed embedId="E23w7vmidHE" />
                 <h1>Deadlift for you:</h1>
+                <h1>Proper form for doing Deadlifts</h1>
+                <Card post={posts[0]} />
                   <h1>Basics</h1>
                     <YoutubeEmbed embedId="vRKDvt695pg" />
                   <h1>Growth</h1>
@@ -28,6 +33,8 @@ const Home = () => {
                   <h1>How much weight?</h1>
                     <YoutubeEmbed embedId="_5z6j-AE17E" />
                 <h1>Squats for you:</h1>
+                  <h1>Proper form for doing Squats</h1>
+                    <Card post={posts[1]} />
                   <h1>Basics</h1>
                     <YoutubeEmbed embedId="sPej2dr2J5s" />
                   <h1>Squat with Dumbell</h1>
@@ -35,6 +42,8 @@ const Home = () => {
                   <h1>Use a Squat Rack</h1>
                     <YoutubeEmbed embedId="kaO7Yw1hlcM" />
                 <h1>Bench for you:</h1>
+                  <h1>Proper form for doing Bench</h1>
+                    <Card post={posts[2]} />
                   <h1>Tutorial and Proper Form</h1>
                     <YoutubeEmbed embedId="gRVjAtPip0Y" />
                   <h1>Benching Checklist</h1>
@@ -42,6 +51,9 @@ const Home = () => {
                   <h1>Growth</h1>
                     <YoutubeEmbed embedId="vcBig73ojpE" />
                 <h1>Free Weights for you:</h1>
+                  <h1>Dumbell Exercises Infographics</h1>
+                    <Card post={posts[5]} />
+                    <Card post={posts[6]} />
                   <h1>How to use</h1>
                     <YoutubeEmbed embedId="KUJSm4DznM8" />
                   <h1>8 Dumbell Exercises</h1>
@@ -54,9 +66,6 @@ const Home = () => {
                   <h1>Cardio vs. Strength</h1>
                     <YoutubeEmbed embedId="YvrKIQ_Tbsk" />
             </div>
-        {posts.map(post => (
-          <Card key={post.id} post={post} />
-        ))}
       </div>
     </div>
   )
