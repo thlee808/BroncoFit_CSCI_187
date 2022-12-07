@@ -27,7 +27,7 @@ function App() {
             <Route path='/chatpage' element={ <Protected><ChatPage /></Protected> } />
             <Route path='/workout' element={ <Protected><Workout /></Protected> } />
             <Route path='/editprofile' element={ <Protected><EditProfile /></Protected> } />
-            <Route path='/progress' element={ <Protected><Progress /></Protected> } />
+            {/* <Route path='/progress' element={ <Protected><Progress /></Protected> } /> */}
           </Routes>
         </ChatContextProvider>
       </AuthContextProvider>
