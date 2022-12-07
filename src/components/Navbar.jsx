@@ -3,9 +3,29 @@ import { auth } from '../firebase'
 import { AuthContext } from '../context/AuthContext'
 import { UserAuth } from '../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
+import { collection, doc, getDoc } from "firebase/firestore";
+import db from "../firebase";
 
 const Navbar = () => {
   const { user, logOut } = UserAuth(auth);
+  const [ans, setAns] = React.useState("", "");
+  const [gotData, setGotData] = React.useState(false);
+
+
+  async function getData() {
+    if(!gotData){
+    const docRef = doc(db, "users", user.uid);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()      ) {
+      console.log("Document data:", docSnap.data());
+    } else {
+      console.log("No such document!");
+    }
+    setGotData(true);
+    return docSnap;
+  } 
+  }
+  getData().then(result => { setAns(result.data()) } );
 
   const handleSignOut = async () => {
     try {
@@ -64,7 +84,7 @@ const Navbar = () => {
               <button className="logoutButton" onClick={ handleSignOut }>Logout</button>
               <a className="profileButton" href='/profile'>
                 <div className="imgContainer">
-                  <img src={user.photoURL} alt="userphoto" referrerPolicy="no-referrer" />
+                  <img src={ans.photoURL} alt="userphoto" referrerPolicy="no-referrer" />
                 </div>
               </a>
               <span className="username">{user.displayName}</span>

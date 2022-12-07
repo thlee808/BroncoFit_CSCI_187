@@ -232,10 +232,23 @@
     flex-direction: column;
     align-items: center;
     width: 50%;
-    border: 2px solid red;
     margin-left: auto;
     margin-right: auto;
-    width: auto
+    width: auto;
+    .navbar {
+        display: flex;
+        height: 6vh;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        background-color: #36454F;
+
+        .header {
+            color: white;
+            font-size: 25px;
+        }
+    }
+    
 }
 .success {
     color: green;

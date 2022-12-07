@@ -7,30 +7,37 @@ const Profile = () => {
   const { user } = UserAuth();
   const [open, setOpen] = React.useState(false);
   const [ans, setAns] = React.useState("", "");
+  const [gotData, setGotData] = React.useState(false);
 
   const handleOpen = () => {
     setOpen(!open);
   };
 
   async function getData() {
+    if(!gotData){
     const docRef = doc(db, "users", user.uid);
     const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
+    if (docSnap.exists()      ) {
       console.log("Document data:", docSnap.data());
     } else {
       console.log("No such document!");
     }
+    setGotData(true);
     return docSnap;
+  } 
   }
-  
-    getData().then(result => { setAns(result.data()) } );
+  getData().then(result => { setAns(result.data()) } );
 
 
 
 
   return (
     <div class='profileContainer'>
-      <h1 className='text-center text-2xl font-bold pt-12'>Your Profile</h1>
+       <nav class="navbar">
+        <div className="header">
+          <h3>Your Profile</h3>
+        </div>
+      </nav>
       <div>
         <p>Welcome, {user?.displayName}</p>
       </div>
@@ -38,10 +45,11 @@ const Profile = () => {
         <p>@{ans?.username}</p>
       </div>
       <div className="imgContainer">
-                  <img src={user.photoURL} alt="userphoto" referrerPolicy="no-referrer"/>
+                  <img src={ans.photoURL} alt="userphoto" referrerPolicy="no-referrer"/>
                 </div>
       <h1 className='text-center text-2xl font-bold pt-12'>Personal Details</h1>
       <div>
+        <p>Gender: { ans? (ans.Gender) : "Not yet set"}</p>
         <p>Height: { ans? (ans.Height) : "Not yet set"}</p>
         <p>Weight: { ans? (ans.Weight) : "Not yet set" }</p>
       </div>
