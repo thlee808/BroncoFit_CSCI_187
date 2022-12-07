@@ -112,7 +112,7 @@ const EditProfile = () => {
   };
 
   const handleSubmit = () => {
-    const imageRef = ref(storage, "image");
+    const imageRef = ref(storage, user.uid);
     uploadBytes(imageRef, image)
       .then(() => {
         getDownloadURL(imageRef)
