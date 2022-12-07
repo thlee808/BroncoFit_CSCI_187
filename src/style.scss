@@ -585,6 +585,24 @@
         }
     }
 }
+.progressPage {
+    height: 900px;
+    background-color: gray;
+
+    .navbar {
+        display: flex;
+        height: 6vh;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        background-color: #36454F;
+
+        .header {
+            color: white;
+            font-size: 25px;
+        }
+    }
+}
 
 .video-responsive {
     overflow: hidden;
