@@ -82,7 +82,7 @@ const Input = () => {
              onChange={(e) => setText(e.target.value)}
              value={text}/>
       <div className="send">
-        <img src="images/default_profile_pic.jpg" alt="user_photo" />
+        <img src="" alt="" />
         <input
           type="file"
           style={{ display: "none" }}
@@ -90,7 +90,7 @@ const Input = () => {
           onChange={(e) => setImg(e.target.files[0])}
         />
         <label htmlFor="file">
-          <img src="images/default_profile_pic.jpg" alt="user_photo" />
+          <img src="" alt="" />
         </label>
         <button onClick={handleSend}>Send</button>
       </div>
