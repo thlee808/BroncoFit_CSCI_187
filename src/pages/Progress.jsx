@@ -1,17 +1,17 @@
 import React from 'react';
-import progressGraph from "../components/progressGraph";
+import ProgressGraph from "../components/ProgressGraph";
 
 const Progress = () => {
     return (
       <div className="progressPage">
-        <nav class="navbar">
+        <nav className="navbar">
           <div className="header">
             <h3>Progress Graph</h3>
           </div>
         </nav>
-        {/*<div className="graphContainer">
-          <progressGraph></progressGraph>
-    </div>*/}
+        <div className="graphContainer">
+          <ProgressGraph></ProgressGraph>
+        </div>
       </div>
       
     )
