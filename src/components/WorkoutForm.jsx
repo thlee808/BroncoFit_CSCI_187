@@ -120,8 +120,8 @@ const WorkoutForm = () => {
                 </>
                 ))}
                 <div className="buttonContainer">
-                    <div className="rowButton skyblue" onClick={handleNewRow}>Add new exercise</div>
-                    <div className="rowButton red" onClick={handleRemoveRow}>Remove last row</div>
+                    <div className="rowButton skyblue" onClick={ handleNewRow }>Add new exercise</div>
+                    <div className="rowButton red" onClick={ handleRemoveRow }>Remove last row</div>
                 </div>
             </div>
             <div class="footer">
