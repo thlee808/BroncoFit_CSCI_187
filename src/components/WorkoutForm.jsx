@@ -86,7 +86,7 @@ const WorkoutForm = () => {
             <div className="form-body">
                 <div className="workoutName">
                     <label className="form__label" for="workoutName">Workout Name: </label>
-                    <input className="form__input" type="text" id="workoutName" value={workoutName} onChange = {(e) => handleInputChange(0, e, "workoutName")} placeholder=""/>
+                    <input className="form__input" type="text" id="workoutName" value={workoutName} onChange = {(e) => handleInputChange(0, e, "workoutName")} placeholder="Chest, Back, Legs, etc..."/>
                 </div>
                 {/*Might not need an input field for date of workout and just take a timestamp when form submitted */}
                 <div className="workoutLength">
@@ -120,8 +120,8 @@ const WorkoutForm = () => {
                 </>
                 ))}
                 <div className="buttonContainer">
-                    <div className="rowButton skyblue" onClick={handleNewRow}>Add new exercise</div>
-                    <div className="rowButton red" onClick={handleRemoveRow}>Remove last row</div>
+                    <div className="rowButton skyblue" onClick={ handleNewRow }>Add new exercise</div>
+                    <div className="rowButton red" onClick={ handleRemoveRow }>Remove last row</div>
                 </div>
             </div>
             <div class="footer">

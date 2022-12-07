@@ -7,12 +7,14 @@ const Profile = () => {
   const { user } = UserAuth();
   const [open, setOpen] = React.useState(false);
   const [ans, setAns] = React.useState("", "");
+  const [gotData, setGotData] = React.useState(false);
 
   const handleOpen = () => {
     setOpen(!open);
   };
 
   async function getData() {
+    if(!gotData){
     const docRef = doc(db, "users", user.uid);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()      ) {
@@ -20,10 +22,11 @@ const Profile = () => {
     } else {
       console.log("No such document!");
     }
+    setGotData(true);
     return docSnap;
+  } 
   }
-  
-    getData().then(result => { setAns(result.data()) } );
+  getData().then(result => { setAns(result.data()) } );
 
 
 
@@ -42,7 +45,7 @@ const Profile = () => {
         <p>@{ans?.username}</p>
       </div>
       <div className="imgContainer">
-                  <img src={user.photoURL} alt="userphoto" referrerPolicy="no-referrer"/>
+                  <img src={ans.photoURL} alt="userphoto" referrerPolicy="no-referrer"/>
                 </div>
       <h1 className='text-center text-2xl font-bold pt-12'>Personal Details</h1>
       <div>
@@ -54,9 +57,12 @@ const Profile = () => {
       <div>
         <p>Deadlift: { ans? (ans.Lift) : "Not yet set"}</p>
         <p>Squats: { ans? (ans.Squat) : "Not yet set" }</p>
+        <p>Bench: { ans? (ans.Bench) : "Not yet set" }</p>
       </div>
+      {/*
       <h1 className='text-center text-2xl font-bold pt-12'>Interests</h1>
-      <div>
+      
+       <div>
       <button onClick={handleOpen}>Show All Interests</button>
       {open ? (
         <ul className="menu">
@@ -69,6 +75,7 @@ const Profile = () => {
         </ul>
       ) : null}
     </div>
+      */}
       <a href="/EditProfile">Edit Profile</a>
     </div>
   );

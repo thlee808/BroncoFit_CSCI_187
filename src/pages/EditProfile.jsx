@@ -19,6 +19,7 @@ const EditProfile = () => {
   const [userHeight, setUserHeight] = useState("");
   const [userLift, setUserLift] = useState("");
   const [userSquat, setUserSquat] = useState("");
+  const [userBench, setUserBench] = useState("");
   const [userGender, setUserGender] = useState(getInitialState);
 
   let [update, setUpdate] = React.useState(false);
@@ -75,7 +76,7 @@ const EditProfile = () => {
     try {
     await updateDoc(doc(db, "users", user.uid), data);
     } catch {
-      updateDoc(doc(db, "users", user.uid), data);
+      setDoc(doc(db, "users", user.uid), data);
     }
   }
 
@@ -89,7 +90,7 @@ const EditProfile = () => {
     try {
     await updateDoc(doc(db, "users", user.uid), data);
     } catch {
-      updateDoc(doc(db, "users", user.uid), data);
+      setDoc(doc(db, "users", user.uid), data);
     }
   }
 
@@ -103,21 +104,43 @@ const EditProfile = () => {
     try {
     await updateDoc(doc(db, "users", user.uid), data);
     } catch {
-      updateDoc(doc(db, "users", user.uid), data);
+      setDoc(doc(db, "users", user.uid), data);
     }
   }
 
+  const submitBench = async (e) => {
+    handleUpdate();
+    e.preventDefault();
+    const data = {
+      Bench: userBench,
+    };
+    setUserBench("");
+    try {
+    await updateDoc(doc(db, "users", user.uid), data);
+    } catch {
+      setDoc(doc(db, "users", user.uid), data);
+    }
+  }
+  
   const genderChange = (e) => {
     setUserGender(e.target.value);
   };
 
   const handleSubmit = () => {
-    const imageRef = ref(storage, "image");
+    const imageRef = ref(storage, user.uid);
     uploadBytes(imageRef, image)
       .then(() => {
         getDownloadURL(imageRef)
-          .then((url) => {
+          .then(async (url) => {
             setUrl(url);
+            const data = {
+              photoURL: url
+            }
+            try {
+              await updateDoc(doc(db, "users", user.uid), data);
+              } catch {
+                updateDoc(doc(db, "users", user.uid), data);
+              }
           })
           .catch((error) => {
             console.log(error.message, "error getting the image url");
@@ -138,9 +161,6 @@ const EditProfile = () => {
       </nav>
       <div>
         <p>{user?.displayName}</p>
-        <div className="imgContainer">
-             <img src={user.photoURL} alt="userphoto" referrerPolicy="no-referrer"/>
-        </div>
         <p>Change profile picture:</p>
       </div>
       <div className="App">
@@ -197,6 +217,15 @@ const EditProfile = () => {
           onChange={(e) => setUserSquat(e.target.value)}
         />
                 <button onClick={submitSquat}>Submit</button>
+        </div>
+        <div className="BenchForm">
+        <input
+          type="text"
+          placeholder="Bench"
+          value={userBench}
+          onChange={(e) => setUserBench(e.target.value)}
+        />
+                <button onClick={submitBench}>Submit</button>
         </div>
       <div className="success">
       <p >{ update? ("Profile Successfully Updated") : "" }</p>
