@@ -311,6 +311,18 @@
             flex: 1;
             border-right: 1px solid black;
             background-color: gray;
+
+            .headerContainer {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #333333;
+                height: 80px;
+
+                .logo {
+                    font-size: 40px;
+                }
+            }
         }
 
         .search {
